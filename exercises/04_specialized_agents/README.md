@@ -55,9 +55,6 @@ Research Task
 Analysis Task
 ```
 
-## Potential Issues
-
-⚠️ **Important**: If the Analyst task doesn't run automatically, see Exercise 5 (Create a Crew) for the proper way to orchestrate multiple tasks.
 
 ## Next Steps
 
