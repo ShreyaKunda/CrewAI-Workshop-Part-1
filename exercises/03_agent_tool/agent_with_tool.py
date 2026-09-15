@@ -9,7 +9,11 @@ llm = LLM(
 
 
 # A simple local tool for reading the workshop data file
-tool = FileReadTool(file_path="data/sample_data.txt")
+@tool("Read sample data")
+def read_sample_data() -> str:
+    """Read the sample dataset provided for the workshop."""
+    with open("data/sample_data.txt", "r", encoding="utf-8") as file:
+        return file.read()
 
 
 researcher = Agent(
