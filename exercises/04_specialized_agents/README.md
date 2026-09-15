@@ -29,13 +29,6 @@ Complete the TODOs in `multi_agent_workflow.py`:
 
 ## How to Run
 
-### Prerequisites
-
-- Python virtual environment activated
-- Dependencies installed: `pip install -r ../../requirements.txt`
-- Ollama running: `ollama serve`
-- Model downloaded: `ollama pull llama3.2`
-
 ### Execute the Exercise
 
 ```bash
@@ -52,12 +45,7 @@ You should see:
 2. The **Analyst** receives the research as context
 3. The Analyst produces its own analysis
 
-## 💡 Tips
 
-- Use `context=[research_task]` to pass one task's output to another
-- Each agent should have a distinct role and perspective
-- The second agent can critique or expand on the first agent's work
-- Order matters: define tasks in the order they should execute
 
 ## Key Concept: Task Dependencies
 
