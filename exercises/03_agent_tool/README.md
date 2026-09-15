@@ -18,14 +18,6 @@ Complete the TODO in `agent_with_tool.py`:
 
 ## How to Run
 
-### Prerequisites
-
-- Python virtual environment activated
-- Dependencies installed: `pip install -r ../../requirements.txt`
-- Ollama running: `ollama serve`
-- Model downloaded: `ollama pull llama3.2`
-- Sample data file exists: `data/sample_data.txt`
-
 ### Execute the Exercise
 
 ```bash
@@ -55,13 +47,6 @@ Monitor,150
 Keyboard,200
 Mouse,175
 ```
-
-## 💡 Tips
-
-- Tools extend what agents can do beyond just generating text
-- The `FileReadTool` is from `crewai-tools` library
-- Agents decide **when** to use a tool based on the task
-- Without the tool, the agent couldn't access the actual data
 
 ## Try These Questions
 
