@@ -1,4 +1,3 @@
-```python
 from crewai import Agent, Task, Crew, LLM
 
 
@@ -108,13 +107,11 @@ crew = Crew(
         analyst,
         advisor
     ],
-
     tasks=[
         research_task,
         analysis_task,
         recommendation_task
     ],
-
     verbose=True
 )
 
@@ -127,4 +124,3 @@ result = crew.kickoff()
 
 print("\n--- Final Crew Output ---")
 print(result)
-```
