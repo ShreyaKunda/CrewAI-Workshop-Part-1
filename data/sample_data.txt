@@ -1,0 +1,7 @@
+Product,Sales
+Laptop,120
+Phone,250
+Tablet,80
+Monitor,150
+Keyboard,200
+Mouse,175
