@@ -24,13 +24,6 @@ Complete the TODOs in `crew.py`:
 
 ## How to Run
 
-### Prerequisites
-
-- Python virtual environment activated
-- Dependencies installed: `pip install -r ../../requirements.txt`
-- Ollama running: `ollama serve`
-- Model downloaded: `ollama pull llama3.2`
-
 ### Execute the Exercise
 
 ```bash
@@ -48,12 +41,6 @@ You should see:
 3. The **Analyst Agent** analyzes the research
 4. Final output from the Crew
 
-## 💡 Tips
-
-- A **Crew** is a container for agents and tasks
-- The Crew automatically handles task sequencing based on `context`
-- `verbose=True` shows the entire workflow execution
-- All agents in a crew share the same LLM instance
 
 ## Crew Workflow
 
@@ -80,6 +67,4 @@ You should see:
 - **Exercise 4**: Manual task execution, limited task chaining
 - **Exercise 5**: Crew-based orchestration, automatic sequencing
 
-## Next Steps
 
-Once this exercise works, you've completed the core multi-agent workflow! Move to **Exercise 6** to learn about evaluation and human oversight.
