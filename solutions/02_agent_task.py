@@ -1,4 +1,4 @@
-from crewai import Agent, Task, LLM
+from crewai import Agent, Task, Crew, LLM
 
 
 llm = LLM(
@@ -25,19 +25,19 @@ research_task = Task(
     2. Why it is important
     3. One real-world example
     """,
-    expected_output="""
-    A short explanation containing:
-    - Definition
-    - Importance
-    - Real-world example
-    """,
+    expected_output="A short explanation containing a definition, importance, and one real-world example.",
     agent=researcher
 )
 
 
-result = researcher.kickoff(
-    "Research Artificial Intelligence. Explain what it is, why it is important, and give one real-world example."
+crew = Crew(
+    agents=[researcher],
+    tasks=[research_task],
+    verbose=True
 )
+
+
+result = crew.kickoff(inputs={"topic": "Artificial Intelligence"})
 
 print("\n--- Task Result ---")
 print(result)
