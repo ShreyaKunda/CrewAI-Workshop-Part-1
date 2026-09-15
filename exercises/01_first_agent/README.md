@@ -21,13 +21,6 @@ Complete the TODOs in `agent.py`:
 
 ## How to Run
 
-### Prerequisites
-
-- Python virtual environment activated
-- Dependencies installed: `pip install -r ../../requirements.txt`
-- Ollama running: `ollama serve`
-- Model downloaded: `ollama pull llama3.2`
-
 ### Execute the Exercise
 
 ```bash
@@ -43,11 +36,7 @@ You should see:
 1. Verbose logs showing the agent's thinking process
 2. A clear, simple explanation of AI from the agent
 
-## 💡 Tips
 
-- The `verbose=True` setting shows the agent's internal reasoning
-- A good backstory helps the agent understand its context and respond better
-- The agent will use the local Ollama model without any API keys
 
 ## Next Steps
 
