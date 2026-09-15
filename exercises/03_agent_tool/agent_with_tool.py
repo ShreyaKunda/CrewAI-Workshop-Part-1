@@ -1,5 +1,11 @@
+from pathlib import Path
+
 from crewai import Agent, LLM
-from crewai_tools import FileReadTool
+from crewai.tools import tool
+
+
+BASE_DIR = Path(__file__).resolve().parents[2]
+DATA_FILE = BASE_DIR / "data" / "sample_data.txt"
 
 
 llm = LLM(
@@ -8,11 +14,11 @@ llm = LLM(
 )
 
 
-# A simple local tool for reading the workshop data file
+# TODO: This custom tool gives the agent access to the local data file.
 @tool("Read sample data")
 def read_sample_data() -> str:
     """Read the sample dataset provided for the workshop."""
-    with open("data/sample_data.txt", "r", encoding="utf-8") as file:
+    with open(DATA_FILE, "r", encoding="utf-8") as file:
         return file.read()
 
 
@@ -20,7 +26,7 @@ researcher = Agent(
     role="Data Analyst",
     goal="Read the provided data and answer questions about it",
     backstory="You are a careful analyst who works with simple datasets.",
-    tools=[tool],
+    tools=[read_sample_data],
     llm=llm,
     verbose=True
 )
