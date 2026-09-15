@@ -1,5 +1,12 @@
 from crewai import Agent, LLM
-from crewai_tools import FileReadTool
+from crewai.tools import tool
+
+
+@tool("Read sample data")
+def read_sample_data() -> str:
+    """Read the sample dataset provided for the workshop."""
+    with open("data/sample_data.txt", "r", encoding="utf-8") as file:
+        return file.read()
 
 
 llm = LLM(
@@ -7,22 +14,17 @@ llm = LLM(
     base_url="http://localhost:11434"
 )
 
-
-tool = FileReadTool(file_path="data/sample_data.txt")
-
-
 analyst = Agent(
     role="Data Analyst",
-    goal="Read the provided data and answer questions about it",
+    goal="Read the provided data and answer questions about it.",
     backstory="You are a careful analyst who works with simple datasets.",
-    tools=[tool],
+    tools=[read_sample_data],
     llm=llm,
     verbose=True
 )
 
-
 result = analyst.kickoff(
-    "Read data/sample_data.txt and identify the product with the highest sales."
+    "Read the sample data and identify the product with the highest sales."
 )
 
 print("\n--- Agent Response ---")
