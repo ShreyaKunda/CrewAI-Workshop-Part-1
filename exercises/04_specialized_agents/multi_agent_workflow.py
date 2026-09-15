@@ -11,8 +11,8 @@ llm = LLM(
 # Agent 1: Researcher
 researcher = Agent(
     role="Researcher",
-    goal="Todo",
-    backstory="Todo",
+    goal="Research a topic and identify the most important information.",
+    backstory="You are a careful researcher who provides clear and useful information.",
     llm=llm,
     verbose=True
 )
@@ -41,8 +41,7 @@ summary_result = summarizer.kickoff(
 
     {research_result}
 
-    Based only on this research, create 3 simple
-    bullet points that could be used in a presentation.
+    Todo
     """
 )
 
