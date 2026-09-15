@@ -1,4 +1,4 @@
-from crewai import Agent, Task, LLM
+from crewai import Agent, LLM
 
 
 llm = LLM(
@@ -9,48 +9,42 @@ llm = LLM(
 
 researcher = Agent(
     role="Researcher",
-    goal="Research a cybersecurity topic",
-    backstory="You are a careful cybersecurity researcher.",
+    goal="Research a topic and identify the most important information.",
+    backstory="You are a careful researcher who provides clear and useful information.",
     llm=llm,
     verbose=True
 )
 
 
-analyst = Agent(
-    role="Cybersecurity Analyst",
-    goal="Analyse research and identify the most important security risks",
-    backstory="You are a cybersecurity analyst who turns research into useful insights.",
+summarizer = Agent(
+    role="Summarizer",
+    goal="Turn research from another agent into a concise summary.",
+    backstory="You are a clear and precise summarizer who focuses on the most important points.",
     llm=llm,
     verbose=True
 )
 
 
-research_task = Task(
-    description="Research the major risks associated with phishing attacks.",
-    expected_output="A concise research summary about phishing risks.",
-    agent=researcher
-)
-
-
-analysis_task = Task(
-    description="Analyse the research and identify the three most important risks.",
-    expected_output="Three key risks with short explanations.",
-    agent=analyst,
-    context=[research_task]
-)
-
-
-# Execute the workflow sequentially.
+# Step 1: Ask the Researcher to do its job
 research_result = researcher.kickoff(
-    "Research the major risks associated with phishing attacks."
+    "Research the benefits of electric vehicles."
 )
 
-analysis_result = analyst.kickoff(
-    f"Analyse the following research and identify the three most important risks:\n\n{research_result}"
+
+# Step 2: Pass the Researcher's output to the Summarizer
+summary_result = summarizer.kickoff(
+    f"""
+    Here is the research produced by another agent:
+
+    {research_result}
+
+    Summarize the research in five clear bullet points.
+    """
 )
 
-print("\n--- Research Result ---")
+
+print("\n--- Researcher Output ---")
 print(research_result)
 
-print("\n--- Analysis Result ---")
-print(analysis_result)
+print("\n--- Summarizer Output ---")
+print(summary_result)
