@@ -1,138 +1,288 @@
-# CrewAI + Ollama Agentic AI Workshop
+# Crew AI Workshop Part 1
 
-A beginner-friendly, hands-on workshop for building AI agents and multi-agent workflows using **CrewAI** and **Ollama**.
+A hands-on workshop for building AI agents and multi-agent workflows using **CrewAI** and **Ollama**.
 
-## 🎯 Workshop Goal
+---
+
+# Table of Contents
+
+* [Workshop Goal](#workshop-goal)
+* [1. Before You Begin](#1-before-you-begin)
+
+  * [Required Software](#required-software)
+  * [Check Your Dependencies](#check-your-dependencies)
+  * [Check Python](#check-python)
+  * [Check pip](#check-pip)
+  * [Check Git](#check-git)
+  * [Check Ollama](#check-ollama)
+  * [Check Your Ollama Model](#check-your-ollama-model)
+* [2. Test Ollama](#2-test-ollama)
+* [3. Clone the Repository](#3-clone-the-repository)
+* [4. Create a Virtual Environment](#4-create-a-virtual-environment)
+* [5. Install the Workshop Dependencies](#5-install-the-workshop-dependencies)
+* [6. Run Your First Workshop Exercise](#6-run-your-first-workshop-exercise)
+
+---
+
+# Workshop Goal
 
 By the end of Part 1, you will be able to:
 
-- Create an AI agent
-- Define an agent's role, goal and backstory
-- Assign tasks to an agent
-- Give an agent a tool
-- Create specialized agents
-- Pass information between agents
-- Build a multi-agent Crew
-- Understand basic agent evaluation and human oversight
+* Create an AI agent
+* Define an agent's role, goal, and backstory
+* Assign tasks to an agent
+* Give an agent a tool
+* Create specialized agents
+* Pass information between agents
+* Build a multi-agent Crew
 
-## 🛠️ Technologies
+---
 
-- Python
-- CrewAI
-- Ollama
-- Local LLM
+# 1. Before You Begin
 
-No paid API key is required.
+Before starting the workshop, make sure the following are installed on your computer. If you have already set everything up, you can skip the installation and setup steps and proceed directly to the exercises.
 
-## 🚀 Setup
+## Required Software
 
-### 1. Clone the repository
+| Software | Required | Check Command      |
+| -------- | -------- | ------------------ |
+| Python   | Yes      | `python --version` |
+| Git      | Yes      | `git --version`    |
+| Ollama   | Yes      | `ollama --version` |
 
-```bash
-git clone https://github.com/ShreyaKunda/CrewAI-Workshop-Part-1.git
-cd CrewAI-Workshop-Part-1
-```
+You will also need to pull a model using Ollama.
 
-### 2. Create a virtual environment
+---
 
-Windows:
+## Check Your Dependencies
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
+Open a terminal and run the following commands one by one.
 
-macOS / Linux:
+### Check Python
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python --version
 ```
 
-### 3. Install dependencies
+You should see something similar to:
+
+```text
+Python 3.11.x
+```
+
+Python 3.10+ is recommended for the workshop.
+
+If `python` does not work, try:
 
 ```bash
-pip install -r requirements.txt
+python3 --version
 ```
 
-### 4. Install Ollama
 
-Download Ollama from https://ollama.com and verify:
+---
+
+### Check Git
+
+```bash
+git --version
+```
+
+You should see something similar to:
+
+```text
+git version 2.x.x
+```
+
+---
+
+### Check Ollama
 
 ```bash
 ollama --version
 ```
 
-### 5. Download a model
+If Ollama is not installed, download it from:
 
-For example:
+https://ollama.com
+
+After installing Ollama, restart your terminal and run:
 
 ```bash
-ollama pull llama3.2
+ollama --version
 ```
 
-Check available models:
+---
+
+### Check Your Ollama Model
+
+Run:
 
 ```bash
 ollama list
 ```
 
-## 🧪 Workshop Exercises
+You should see `llama3.2` in the list.
 
-| Exercise | What you learn |
-|---|---|
-| 1. Create Your First AI Agent | Role, goal, backstory and agent execution |
-| 2. Assign Tasks to an Agent | Task description and expected output |
-| 3. Give an Agent a Tool | File/data analysis using a tool |
-| 4. Build Two Specialized Agents | Passing one agent's output to another |
-| 5. Create a Crew | Basic multi-agent workflow |
-| 6. Quick Evaluation | Hallucinations, evaluation and human oversight |
+If you do not have it, download it using:
 
-## 📁 Repository Structure
-
-```text
-CrewAI-Workshop-Part-1/
-│
-├── README.md
-├── requirements.txt
-├── .env.example
-├── .gitignore
-│
-├── exercises/
-│   ├── 01_first_agent.py
-│   ├── 02_agent_task.py
-│   ├── 03_agent_tool.py
-│   ├── 04_specialized_agents.py
-│   ├── 05_create_crew.py
-│   └── 06_evaluation.md
-│
-├── data/
-│   └── sample_data.txt
-│
-└── solutions/
-    ├── 01_first_agent.py
-    ├── 02_agent_task.py
-    ├── 03_agent_tool.py
-    ├── 04_specialized_agents.py
-    └── 05_create_crew.py
+```bash
+ollama pull llama3.2
 ```
 
-## 💡 Workshop Philosophy
+This may take some time depending on your internet connection.
 
-The exercises are intentionally small. The goal is to understand the fundamental building blocks of Agentic AI rather than build a production application.
+---
 
-```text
-Agent
-  +
-Task
-  +
-Tools
-  +
-Other Agents
-  =
-Multi-Agent Workflow
+# 2. Test Ollama
+
+Before continuing with the workshop setup, make sure that Ollama is working correctly.
+
+Run:
+
+```bash
+ollama run llama3.2
 ```
 
-## ⚠️ Important
+You should be able to interact with the model directly from your terminal.
 
-AI agents can produce incorrect or incomplete information. Always review important outputs and use human oversight where appropriate.
+Try asking:
+
+```text
+What is an AI agent?
+```
+
+If you receive a response, Ollama is working correctly.
+
+To exit the Ollama session, use:
+
+```text
+/bye
+```
+
+or press:
+
+```text
+Ctrl+C
+```
+
+If this works, you are ready to continue.
+
+---
+
+# 3. Clone the Repository
+
+Once your dependencies are ready, clone the workshop repository.
+
+Run:
+
+```bash
+git clone https://github.com/ShreyaKunda/CrewAI-Workshop-Part-1.git
+```
+
+Move into the repository:
+
+```bash
+cd CrewAI-Workshop-Part-1
+```
+
+You can verify that you are inside the repository by running:
+
+```bash
+dir
+```
+
+on Windows, or:
+
+```bash
+ls
+```
+
+on macOS/Linux.
+
+You should see files and folders such as:
+
+```text
+README.md
+requirements.txt
+exercises
+data
+solutions
+```
+
+---
+
+# 4. Create a Virtual Environment
+
+A virtual environment keeps the workshop dependencies separate from other Python projects on your computer.
+
+## Windows
+
+Run:
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+```bash
+.venv\Scripts\activate
+```
+
+After activation, you should see something similar to:
+
+```text
+(.venv)
+```
+
+at the beginning of your terminal.
+
+## macOS / Linux
+
+Run:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate it:
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+# 5. Install the Workshop Dependencies
+
+Make sure your virtual environment is activated.
+
+Then run:
+
+```bash
+pip install -r requirements.txt
+```
+
+This installs the Python packages required for the workshop.
+
+You can verify that CrewAI is installed with:
+
+```bash
+pip show crewai
+```
+
+---
+
+# 6. Run Your First Workshop Exercise
+
+The exercises are located inside:
+
+```text
+exercises/
+```
+
+
+If everything is configured correctly, the agent should run using your local Ollama model. You are now ready for the workshop.
+
+---
+
