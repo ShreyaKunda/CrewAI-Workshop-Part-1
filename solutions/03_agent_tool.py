@@ -1,11 +1,17 @@
+from pathlib import Path
+
 from crewai import Agent, LLM
 from crewai.tools import tool
+
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+DATA_FILE = BASE_DIR / "data" / "sample_data.txt"
 
 
 @tool("Read sample data")
 def read_sample_data() -> str:
     """Read the sample dataset provided for the workshop."""
-    with open("data/sample_data.txt", "r", encoding="utf-8") as file:
+    with open(DATA_FILE, "r", encoding="utf-8") as file:
         return file.read()
 
 
