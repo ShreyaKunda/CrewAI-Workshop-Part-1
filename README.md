@@ -18,19 +18,9 @@ By the end of Part 1, you will be able to:
 
 ---
 
-# Installation
-
-Before starting the exercises, follow the complete student setup guide:
-
-**[INSTALLATION.md](INSTALLATION.md)**
-
-It covers Python 3.11, Git, Ollama, the `llama3.2` model, virtual environments, CrewAI dependencies, VS Code setup, verification steps, and troubleshooting.
-
----
-
 # 1. Before You Begin
 
-Before starting the workshop, make sure the following are installed.
+Before starting the exercises, make sure the following are installed.
 
 | Software | Required | Check Command |
 | --- | --- | --- |
@@ -133,7 +123,6 @@ You should see files and folders such as:
 
 ```text
 README.md
-INSTALLATION.md
 requirements.txt
 exercises
 data
