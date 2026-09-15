@@ -21,13 +21,6 @@ Complete the TODOs in `agent_with_task.py`:
 
 ## How to Run
 
-### Prerequisites
-
-- Python virtual environment activated
-- Dependencies installed: `pip install -r ../../requirements.txt`
-- Ollama running: `ollama serve`
-- Model downloaded: `ollama pull llama3.2`
-
 ### Execute the Exercise
 
 ```bash
@@ -42,13 +35,6 @@ You should see:
 
 1. Verbose logs showing the agent working on the task
 2. A structured response about AI based on the expected output format
-
-## 💡 Tips
-
-- Tasks make agent behavior more predictable and structured
-- A good `expected_output` helps the agent know what format to use
-- The `description` should be clear and specific
-- Tasks can have inputs that customize their behavior
 
 ## Key Differences from Exercise 1
 
