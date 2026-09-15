@@ -11,8 +11,8 @@ llm = LLM(
 # Agent 1: Researcher
 researcher = Agent(
     role="Researcher",
-    goal="Research a topic and identify the most important information.",
-    backstory="You are a careful researcher who provides clear and useful information.",
+    goal="Todo",
+    backstory="Todo",
     llm=llm,
     verbose=True
 )
@@ -21,8 +21,8 @@ researcher = Agent(
 # Agent 2: Summarizer
 summarizer = Agent(
     role="Summarizer",
-    goal="Turn research into simple and easy-to-understand points.",
-    backstory="You are good at simplifying complex information.",
+    goal="Todo",
+    backstory="Todo",
     llm=llm,
     verbose=True
 )
