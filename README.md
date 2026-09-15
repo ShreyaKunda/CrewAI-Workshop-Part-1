@@ -220,7 +220,7 @@ A virtual environment keeps the workshop dependencies separate from other Python
 Run:
 
 ```bash
-python -m venv .venv
+py -3.11 -m venv .venv
 ```
 
 Activate it:
@@ -242,7 +242,7 @@ at the beginning of your terminal.
 Run:
 
 ```bash
-python3 -m venv .venv
+py -3.11 -m venv .venv
 ```
 
 Activate it:
