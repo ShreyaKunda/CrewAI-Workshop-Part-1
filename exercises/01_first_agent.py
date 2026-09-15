@@ -8,7 +8,7 @@ llm = LLM(
 )
 
 
-# TODO 1: Create a Researcher Agent.
+# TODO : Create a Researcher Agent.
 # Define its role, goal and backstory.
 researcher = Agent(
     role="TODO",
