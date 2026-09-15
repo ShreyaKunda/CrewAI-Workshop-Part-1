@@ -1,54 +1,55 @@
-from crewai import Agent, Task, LLM
+from crewai import Agent, LLM
 
 
+# Connect to Ollama
 llm = LLM(
     model="ollama/llama3.2",
     base_url="http://localhost:11434"
 )
 
 
-# TODO 1: Create a Researcher agent.
+# Agent 1: Researcher
 researcher = Agent(
     role="Researcher",
-    goal="Research a cybersecurity topic",
-    backstory="You are a careful cybersecurity researcher.",
+    goal="Research a topic and identify the most important information.",
+    backstory="You are a careful researcher who provides clear and useful information.",
     llm=llm,
     verbose=True
 )
 
 
-# TODO 2: Create a specialized Analyst agent.
-analyst = Agent(
-    role="TODO",
-    goal="TODO",
-    backstory="TODO",
+# Agent 2: Summarizer
+summarizer = Agent(
+    role="Summarizer",
+    goal="Turn research into simple and easy-to-understand points.",
+    backstory="You are good at simplifying complex information.",
     llm=llm,
     verbose=True
 )
 
 
-research_task = Task(
-    description="Research the major risks associated with phishing attacks.",
-    expected_output="A concise research summary about phishing risks.",
-    agent=researcher
+# Step 1: Ask the Researcher to do its job
+research_result = researcher.kickoff(
+    "Research the benefits of electric vehicles."
 )
 
 
-# TODO 3: Create an analysis task that receives the research task output.
-analysis_task = Task(
-    description="TODO",
-    expected_output="TODO",
-    agent=analyst,
-    context=[research_task]
+# Step 2: Pass the Researcher's output to the Summarizer
+summary_result = summarizer.kickoff(
+    f"""
+    Here is the research produced by another agent:
+
+    {research_result}
+
+    Based only on this research, create 3 simple
+    bullet points that could be used in a presentation.
+    """
 )
 
 
-# TODO 4: Run both tasks together as a simple workflow.
-result = researcher.kickoff(
-    "Research the major risks associated with phishing attacks."
-)
+# Display both outputs
+print("\n--- Researcher Output ---")
+print(research_result)
 
-print("\n--- Research Result ---")
-print(result)
-
-print("\nNow pass the research output to the Analyst task.")
+print("\n--- Summarizer Output ---")
+print(summary_result)
