@@ -1,4 +1,4 @@
-from crewai import Agent, Task, LLM
+from crewai import Agent, Task, Crew, LLM
 
 
 llm = LLM(
@@ -25,10 +25,16 @@ research_task = Task(
 )
 
 
-# TODO 2: Run the task using the agent.
-result = researcher.kickoff(
-    inputs={"topic": "Artificial Intelligence"}
+# TODO 2: Create a one-agent Crew and add the task to it.
+crew = Crew(
+    agents=[researcher],
+    tasks=[research_task],
+    verbose=True
 )
+
+
+# TODO 3: Run the Crew with a topic.
+result = crew.kickoff(inputs={"topic": "Artificial Intelligence"})
 
 print("\n--- Task Result ---")
 print(result)
